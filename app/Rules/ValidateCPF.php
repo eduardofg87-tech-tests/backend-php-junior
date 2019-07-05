@@ -40,6 +40,6 @@ class ValidateCPF implements Rule
 
     public function message()
     {
-        return __('CPF inválido');
+        return __('Invalid cpf');
     }
 }
