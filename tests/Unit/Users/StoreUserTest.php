@@ -207,9 +207,4 @@ class StoreUserTest extends TestCase
 
         $this->assertArrayHasKey('password', $content);
     }
-
-    protected function jsonToArray($content)
-    {
-        return json_decode($content, true);
-    }
 }

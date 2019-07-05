@@ -26,4 +26,14 @@ abstract class TestCase extends BaseTestCase
 
         return $this;
     }
+
+    /**
+     * Convert the response to array
+     *
+     * @param content json
+     */
+    protected function jsonToArray($content)
+    {
+        return json_decode($content, true);
+    }
 }
