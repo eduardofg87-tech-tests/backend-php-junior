@@ -20,7 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name'              => $faker->name,
         'email'             => $faker->unique()->safeEmail,
-        'cpf'               => preg_replace('(\D)', '', $faker->cpf),
+        'cpf'               => preg_replace('/\D/', '', $faker->cpf),
         'email_verified_at' => now(),
         'password'          => 'password',
         'remember_token'    => Str::random(10),
