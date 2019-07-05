@@ -17,9 +17,10 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group([
     'prefix'     => 'users',
-    'middleware' => 'auth:api'
+    'middleware' => 'jwt.auth'
 ], function () {
     Route::post('/', 'UserController@store');
     Route::get('/{user}', 'UserController@show');
+    Route::put('/{user}', 'UserController@update');
     Route::delete('/{user}', 'UserController@destroy');
 });
