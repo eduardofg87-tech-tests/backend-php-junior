@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/ping', 'PingController');
+
 Route::group(['prefix' => 'auth'], function () {
     Route::post('signin', 'AuthController@signin');
 });
