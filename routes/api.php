@@ -14,3 +14,10 @@
 Route::group(['prefix' => 'auth'], function () {
     Route::post('signin', 'AuthController@signin');
 });
+
+Route::group([
+    'prefix'     => 'users',
+    'middleware' => 'auth:api'
+], function () {
+    Route::post('/', 'UserController@store');
+});
