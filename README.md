@@ -3,7 +3,7 @@ Teste programador Backend PHP Júnior (Laravel)
 
 ## Desafio Programador PHP Backend Júnior(Laravel)
 As tarefas de CRUD são rotinas muito comuns no dia a dia de desenvolvedores web, o objetivo principal do desafio é fazer um CRUD de Usuários. Somente a rota API é importante, não se preocupe com o frontend. 
-Todos testes de usabilidade do sistema serão realizados através do Postman.
+Todos testes de funcionamento do sistema serão realizados através do Postman.
 Testes uniários com PHPUnit são um plus.
 Espera-se que o candidato tenha bons conhecimentos em PHP e saiba o mínimo do framework Laravel. 
 Para persistencia dos dados deve ser utilizado algum banco de dados relacional como por exemplo PostgreSQL ou MariaDB.
