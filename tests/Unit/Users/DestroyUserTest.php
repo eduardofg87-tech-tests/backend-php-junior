@@ -25,6 +25,16 @@ class DestroyUserTest extends TestCase
     }
 
     /** @test */
+    public function it_should_require_a_valid_bearer_token_to_destroy_a_user()
+    {
+        $maryAnn = factory(User::class)->create();
+        $route   = action('UserController@destroy', ['id' => $maryAnn->id]);
+
+        $this->deleteJson($route)
+            ->assertUnauthorized();
+    }
+
+    /** @test */
     public function it_should_prevent_to_delete_a_user_with_an_invalid_id()
     {
         $johnDoe = factory(User::class)->create();
