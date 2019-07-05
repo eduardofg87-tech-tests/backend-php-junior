@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -60,6 +61,13 @@ class Handler extends ExceptionHandler
             return response()->json(
                 ['status' => Response::HTTP_METHOD_NOT_ALLOWED, 'message' => 'method not allowed'],
                 Response::HTTP_NOT_FOUND
+            );
+        }
+
+        if ($exception instanceof UnauthorizedHttpException) {
+            return response()->json(
+                ['status' => Response::HTTP_UNAUTHORIZED, 'message' => 'unauthorized'],
+                Response::HTTP_UNAUTHORIZED
             );
         }
 
