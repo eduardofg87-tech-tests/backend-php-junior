@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $user->update($request->validated());
 
-        return response()->json($user, Response::HTTP_OK);
+        return response()->json($user->fresh(), Response::HTTP_OK);
     }
 
     public function destroy(UserDestroyRequest $request, User $user)
