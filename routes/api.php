@@ -14,15 +14,9 @@
 Route::get('/ping', 'PingController');
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('signin', 'AuthController@signin');
+    Route::post('/', 'AuthController@signin');
 });
 
-Route::group([
-    'prefix'     => 'users',
-    'middleware' => 'jwt.auth'
-], function () {
-    Route::post('/', 'UserController@store');
-    Route::get('/{user}', 'UserController@show');
-    Route::put('/{user}', 'UserController@update');
-    Route::delete('/{user}', 'UserController@destroy');
-});
+Route::resource('users', 'UserController')->except([
+    'edit', 'create'
+])->middleware('jwt.auth');
