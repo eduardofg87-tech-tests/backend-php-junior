@@ -18,9 +18,9 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|max:255',
-            'email' => 'required|max:255|email|unique:users,email,' . $this->user->id,
-            'cpf'   => ['required', 'min:11', 'max:11', new ValidateCPF]
+            'name'  => 'min:1|max:255',
+            'email' => 'max:255|email|unique:users,email,' . $this->user->id,
+            'cpf'   => ['min:11', 'max:11', new ValidateCPF]
         ];
     }
 }
