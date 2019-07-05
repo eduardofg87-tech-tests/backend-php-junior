@@ -41,6 +41,15 @@ class StoreUserTest extends TestCase
     }
 
     /** @test */
+    public function it_should_require_a_valid_bearer_token_to_store()
+    {
+        $maryAnn = factory(User::class)->raw();
+
+        $this->postJson($this->storeRoute, $maryAnn)
+            ->assertUnauthorized();
+    }
+
+    /** @test */
     public function it_should_require_a_name()
     {
         $maryAnn = factory(User::class)->raw(['name' => '']);
