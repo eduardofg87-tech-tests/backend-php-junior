@@ -20,4 +20,5 @@ Route::group([
     'middleware' => 'auth:api'
 ], function () {
     Route::post('/', 'UserController@store');
+    Route::get('/{user}', 'UserController@show');
 });
