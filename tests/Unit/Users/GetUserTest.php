@@ -36,4 +36,16 @@ class GetUserTest extends TestCase
         $this->getJson($route)
             ->assertUnauthorized();
     }
+
+    /** @test */
+    public function it_should_prevent_to_get_a_user_with_an_invalid_id()
+    {
+        $johnDoe = factory(User::class)->create();
+
+        $route = action('UserController@show', ['id' => 999]);
+
+        $this->actingAs($johnDoe)
+            ->deleteJson($route)
+            ->assertNotFound();
+    }
 }

@@ -21,4 +21,5 @@ Route::group([
 ], function () {
     Route::post('/', 'UserController@store');
     Route::get('/{user}', 'UserController@show');
+    Route::delete('/{user}', 'UserController@destroy');
 });
