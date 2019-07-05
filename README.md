@@ -52,7 +52,7 @@ Ele irá retornar um JSON quando der erro e um JSON quando for sucesso.
       "nome":"Programador Backend PHP Júnior",
       "cpf":"12345678909",
       "email":"junior@php.net",
-      "createdAt":"2019-07-03 07:09:08"
+      "createdAt":"2019-07-03 07:09:08",
       "updatedAt":"2019-07-03 07:09:08"
    }
 }
