@@ -143,9 +143,4 @@ class UpdateUserTest extends TestCase
 
         $this->assertArrayHasKey('cpf', $content);
     }
-
-    protected function jsonToArray($content)
-    {
-        return json_decode($content, true)['errors'];
-    }
 }
