@@ -13,14 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::resource('users', 'UsersController');
 });
 
-Route::prefix('v1')->group(function () {
-    Route::resources([
-        'users' => 'UsersController',
-        'auth' => 'AuthController',
-    ]);
-    Route::get('ping', 'PingController@index');
-});
+Route::resource('auth', 'AuthController');
+Route::get('ping', 'PingController@index');
