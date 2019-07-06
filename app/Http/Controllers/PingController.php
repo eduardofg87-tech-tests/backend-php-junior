@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Ping;
+
 class PingController extends Controller
 {
     public function index()
@@ -9,22 +11,7 @@ class PingController extends Controller
         return [
             'name' => env('APP_NAME'),
             'environment' => env('APP_ENV'),
-            'connection' => $this->connection(),
+            'status' => Ping::check(env('APP_URL')),
         ];
-    }
-
-    public function connection()
-    {
-        try {
-            mysqli_connect(
-                env('DB_HOST'),
-                env('DB_USERNAME'),
-                env('DB_PASSWORD'),
-                env('DB_DATABASE')
-            );
-            return true;
-        }catch (\ErrorException $e) {
-            return $e->getMessage();
-        }
     }
 }
