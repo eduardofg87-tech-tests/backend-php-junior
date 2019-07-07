@@ -14,8 +14,9 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->group(function () {
-    Route::resource('users', 'UsersController');
+    Route::delete('auth', 'AuthController@logout');
 });
 
-Route::resource('auth', 'AuthController');
+Route::resource('users', 'UsersController');
+Route::post('auth', 'AuthController@login');
 Route::get('ping', 'PingController@index');

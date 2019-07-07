@@ -4,28 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Lang;
 
 class AuthController extends Controller
 {
     use AuthenticatesUsers;
 
-    public function store(Request $request)
+    public function login(Request $request)
     {
         $this->validateLogin($request);
         $credentials = $this->credentials($request);
-        $token = \JWTAuth::attempt($credentials);
+        $token = auth('api')->attempt($credentials);
         return $this->responseToken($token);
+    }
+
+    public function logout()
+    {
+        auth('api')->logout();
+        return response()->json(Lang::get('auth.logout'), 204);
     }
 
     private function responseToken($token)
     {
         if ($token) {
             return [
-                'token' => $token,
+                'status' => 'success',
+                'message' => Lang::get('auth.success'),
+                'tokenjwt' => $token,
+                'expires' => auth('api')->payload()->get('exp'),
+                'tokenmsg' => Lang::get('auth.tokenmsg'),
+                'User' => auth('api')->user(),
             ];
         }
         return response()->json([
-            'error' => \Lang::get('auth.failed')
-        ], 400);
+            'status' => 'error',
+            'message' => Lang::get('auth.failed')
+        ], 500);
     }
 }
