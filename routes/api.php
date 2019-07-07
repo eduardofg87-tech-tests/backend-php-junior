@@ -17,6 +17,6 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('auth', 'AuthController@logout');
 });
 
-Route::resource('users', 'UsersController');
+Route::resource('users', 'UsersController')->except(['create', 'edit']);
 Route::post('auth', 'AuthController@login');
 Route::get('ping', 'PingController@index');
