@@ -31,7 +31,7 @@ class AuthController extends Controller
                 'status' => 'success',
                 'message' => Lang::get('auth.success'),
                 'tokenjwt' => $token,
-                'expires' => auth('api')->payload()->get('exp'),
+                'expires' => date('Y-m-d', auth('api')->payload()->get('exp')),
                 'tokenmsg' => Lang::get('auth.tokenmsg'),
                 'User' => auth('api')->user(),
             ];
