@@ -11,9 +11,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'success'  => 'Você foi logado com sucesso.',
-    'failed'   => 'Credenciais informadas não correspondem com nossos registros.',
+    'success'  => 'Usuário logado com sucesso.',
+    'failed'   => 'Usuário não pode ser autenticado!',
     'throttle' => 'Você realizou muitas tentativas de login. Por favor, tente novamente em :seconds segundos.',
-    'logout'   => 'Você foi deslogado com sucesso.',
+    'logout'   => 'Usuário deslogado com sucesso.',
     'tokenmsg' => 'Use o token para acessar os endpoints!',
 ];
