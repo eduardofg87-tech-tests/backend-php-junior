@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Karlmonson\Ping\PingServiceProvider::class,
+        LaravelLegends\PtBrValidator\ValidatorProvider::class
 
     ],
 
