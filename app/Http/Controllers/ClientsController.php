@@ -100,6 +100,24 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
+        try {
 
+            $client = Clients::find($id);
+
+            if(empty($client)){
+                return response()->json(['mensagem' => 'usuário não foi encontrado!']);
+            }
+
+            $isDeleted = $client->delete();
+
+            if($isDeleted){
+                return response()->json(['mensagem' => 'usuario removido com sucesso!!'], 201);
+            }else{
+                throw new Exeption("Falha ao remover os dados solicitados");
+            }
+
+        } catch (Exception $e) {
+            return response()->json(['mensagem' => 'Erro ao remover o usuário'], 500);
+        }
     }
 }
