@@ -42,9 +42,10 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+//            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
-            'hash' => false,
+//            'hash' => false,
         ],
     ],
 

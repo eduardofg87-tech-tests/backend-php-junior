@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b6d62e3328e2ddda234560841055aab",
+    "content-hash": "52ab968cd40f07ab68fd9c7084a16044",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3051,16 +3051,16 @@
         },
         {
             "name": "tymon/jwt-auth",
-            "version": "dev-develop",
+            "version": "1.0.0-rc.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
-                "reference": "13e8ddc7bac782d9f0458ed151e3690ac7ba44fd"
+                "reference": "63698d304554e5d0bc3eb481cc260a9fc900e151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/13e8ddc7bac782d9f0458ed151e3690ac7ba44fd",
-                "reference": "13e8ddc7bac782d9f0458ed151e3690ac7ba44fd",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/63698d304554e5d0bc3eb481cc260a9fc900e151",
+                "reference": "63698d304554e5d0bc3eb481cc260a9fc900e151",
                 "shasum": ""
             },
             "require": {
@@ -3122,7 +3122,7 @@
                 "jwt",
                 "laravel"
             ],
-            "time": "2019-05-18T22:14:11+00:00"
+            "time": "2019-03-14T20:29:20+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4944,9 +4944,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "tymon/jwt-auth": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
