@@ -24,4 +24,4 @@ Route::group([
 
 Route::post('register', 'UsersController@register');
 Route::post('auth', 'UsersController@login');
-Route::post('/ping');
+Route::post('ping', 'HealthController@health');
