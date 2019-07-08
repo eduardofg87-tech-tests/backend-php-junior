@@ -24,9 +24,21 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'  => 'required',
-            'cpf'   => 'required|Numeric',
-            'email' => 'required|email'
+            'name'  => 'required',
+            'cpf'   => 'required|Numeric|unique:clients,cpf',
+            'email' => 'required|email|unique:clients,email'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'name.required' => 'informe um nome para o cliente',
+            'cpf.required'  => 'informe o cpf',
+            'cpf.Numeric'   => 'informe numeros para o cpf',
+            'cpf.unique'   => 'esse cpf já está cadastrado',
+            'email.required'=> 'informe o e-mail',
+            'email.email'   => 'informe um email válido',
+            'email.unique'  => 'esse email já está cadastrado'
         ];
     }
 }

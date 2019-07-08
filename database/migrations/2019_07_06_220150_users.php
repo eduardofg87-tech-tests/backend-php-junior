@@ -15,9 +15,9 @@ class Users extends Migration
     {
         Schema::create('clients', function (Blueprint $table){
            $table->integer('id')->autoIncrement();
-           $table->string('nome', 100);
-           $table->string('cpf', 100);
-           $table->string('email');
+           $table->string('name', 100);
+           $table->string('cpf', 100)->unique();
+           $table->string('email')->unique();
            $table->timestamps();
         });
     }

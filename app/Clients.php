@@ -7,7 +7,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Clients extends Model implements JWTSubject
 {
-    protected $fillable = ['nome', 'cpf', 'email'];
+    protected $fillable = ['name', 'cpf', 'email'];
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

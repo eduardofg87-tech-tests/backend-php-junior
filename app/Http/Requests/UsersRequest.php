@@ -29,4 +29,16 @@ class UsersRequest extends FormRequest
             'password' => 'required|string|min:6',
         ];
     }
+
+    public function messages(){
+        return [
+            'name.required' => "informe um nome para o usuário",
+            'name.string'   => "informe um valor válido",
+            'name.max'      => "maximo de caracteres é 255",
+            'email.required'=> "informe um e-mail",
+            'email.email'   => "informe um formato válido de email",
+            'email.max'     => "maximo de caracteres é 255",
+            'email.unique'  => "esse email já está em uso"
+        ];
+    }
 }
