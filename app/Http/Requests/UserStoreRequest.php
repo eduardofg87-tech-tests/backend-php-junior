@@ -12,7 +12,7 @@ class UserStoreRequest extends FormRequest
 
     public function authorize()
     {
-        return true;
+        return auth('api')->check();
     }
 
     public function rules()
