@@ -19,9 +19,9 @@ class ClientsController extends Controller
         $clients = Clients::all();
 
         if($clients->count() > 0){
-            $result = response()->json(['data' => $clients], 201);
+            $result = response()->json(['retorno'=> true,'data' => $clients], 201);
         }else{
-            $result = response()->json(['mensagem' => 'Não Foram encontrados clientes cadastrados'], 404);
+            $result = response()->json(['retorno'=> false,'mensagem' => 'Não Foram encontrados clientes cadastrados'], 404);
         }
 
         return $result;
@@ -39,12 +39,12 @@ class ClientsController extends Controller
         try{
             $insert = Clients::create($request->all());
             if($insert->id){
-               return response()->json(['mensagem' => 'usuário cadastrado com sucesso!', 'id_usuario' => $insert->id], 201);
+               return response()->json(['retorno'=> true,'mensagem' => 'usuário cadastrado com sucesso!', 'id_usuario' => $insert->id], 201);
             }else{
                 throw new \Exception("Falha ao inserir os dados");
             }
         }catch (Exception $e){
-            return response()->json(['mensagem' => 'houve um problema ao cadastrar os dados!'], 500);
+            return response()->json(['retorno'=> false,'mensagem' => 'houve um problema ao cadastrar os dados!'], 500);
         }
     }
 
@@ -59,9 +59,9 @@ class ClientsController extends Controller
         $client = Clients::find($id);
 
         if(!empty($client)){
-            $result = response()->json($client,201);
+            $result = response()->json(['retorno'=> true,'data' => $client],201);
         }else{
-            $result = response()->json(['mensagem' => 'cliente não encontrado'], 404);
+            $result = response()->json(['retorno'=> false,'mensagem' => 'cliente não encontrado'], 404);
         }
 
         return $result;
@@ -79,16 +79,22 @@ class ClientsController extends Controller
     {
 
         try{
-            $updatedQuantity = Clients::where('id', $id)->update($request->all());
+             $getClient = Clients::where('id', $id);
+
+           if($getClient->count() <= 0){
+                return response()->json(['retorno'=> false,'mensagem' => 'usuário não foi encontrado!'], 404);
+           }
+
+            $updatedQuantity = $getClient->update($request->all());
 
             if($updatedQuantity > 0){
-                return response()->json(['mensagem' => 'usuário atualizado com sucesso!'], 201);
+                return response()->json(['retorno' => true, 'mensagem' => 'usuário atualizado com sucesso!'], 201);
             }else{
                 throw new \Exception("Falha ao atualizar os dados");
             }
 
         }catch (Exception $e){
-              return response()->json(['mensagem', 'Falha ao atualizar os dados'], 500);
+              return response()->json(['retorno'=> false ,'mensagem', 'Falha ao atualizar os dados'], 500);
         }
     }
 
@@ -105,7 +111,7 @@ class ClientsController extends Controller
             $client = Clients::find($id);
 
             if(empty($client)){
-                return response()->json(['mensagem' => 'usuário não foi encontrado!']);
+                return response()->json(['mensagem' => 'usuário não foi encontrado!'], 404);
             }
 
             $isDeleted = $client->delete();

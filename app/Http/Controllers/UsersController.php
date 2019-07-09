@@ -3,10 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use JWTAuth;
-use Tymon\JWTAuth\Exeptions\JWTException;
-use Tymon\JWTAuth\Exeptions\TokenExpiredException;
-use Tymon\JWTAuth\Exeptions\TokenInvalidException;
 use App\Http\Requests\UsersRequest;
 
 
@@ -24,10 +20,15 @@ class UsersController extends Controller
         $credentials = \request(['email', 'password']);
 
         if(!$token = auth('api')->attempt($credentials)){
-            return response()->json(['error' => 'usuario ou senha inválidos']);
+            return response()->json(['error' => 'usuario ou senha inválidos'], 404);
         }
 
         return $this->reponseWithToken($token);
+    }
+
+    public function logout(){
+        auth('api')->logout();
+        return response()->json(['message' => 'logout feito com sucesso'], 201);
     }
 
     public function register(UsersRequest $request){
@@ -38,13 +39,8 @@ class UsersController extends Controller
         if($insert->id){
            return $this->login();
         }else{
-            return response()->json(['error' => 'falha ao cadastrar o usuário']);
+            return response()->json(['error' => 'falha ao cadastrar o usuário'], 500);
         }
-    }
-
-    public function logout(){
-        auth('api')->logout();
-        return response()->json(['message' => 'logout feito com sucesso']);
     }
 
 
@@ -64,7 +60,7 @@ class UsersController extends Controller
            "token" => $token,
            "expires" => auth('api')->factory()->getTTL() * 60,
            "user" => auth('api')->user()
-        ]);
+        ], 201);
     }
 
 

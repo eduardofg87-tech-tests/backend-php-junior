@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -55,6 +56,14 @@ class Handler extends ExceptionHandler
                   $exception->status
                 );
             }
+
+            if($exception instanceof MethodNotAllowedHttpException){
+                return response()->json([
+                    'retorno' => false,
+                    'mensagem' => $exception->getMessage()
+                ]);
+            }
+
         }
 
         return parent::render($request, $exception);

@@ -1,4 +1,4 @@
-# backend-php-junior
+# backend-php-junior - Teste Concluído
 Teste programador Backend PHP Júnior (Laravel)
 
 ## Desafio Programador PHP Backend Júnior(Laravel)
@@ -10,29 +10,45 @@ Para persistencia dos dados deve ser utilizado algum banco de dados relacional c
 
 ### O presente desafio deve ser solucionado até 12/07/2019. 
 
-## Instruções:
-1. Faça um fork do projeto.
-1. Resolva o dasafio e submeta um PR até o dia 12/07/2019.
-1. Envie um e-mail para (oi at eduardofg dot dev) assim que o PR for submetido informando que o desafio foi finalizado.
+## Instruções para funcionamento:
+- Clone o repositório na sua pasta de projetos
+- No terminal, dentro da raiz do projeto, rode o comando: <code>composer install</code>, para fazer a instalação das depedências.
+- Crie um arquivo .env a partir do modelo de exemplo que se encontra na raiz do projeto e configure os seguintes parametros:
 
-### Objetivo
-Construir uma API backend em Laravel que implementem um CRUD e os seguintes endpoints:
+<code>
+    DB_CONNECTION=mysql <br>
+    DB_HOST=127.0.0.1    <br>
+    DB_PORT=3306  <br>
+    DB_DATABASE=nome_do_seu_banco <br>
+    DB_USERNAME=usuario_do_banco<br>
+    DB_PASSWORD=senha_do_banco
+</code>
 
+- Gerar a chave do App com o comando: <code>php artisan make:key generate</code>.
+- Gerar a chave secreta do JWT para realizar a autenticação via Token. O comando é, <code>php artisan jwt:secret</code>
+- Rodar as migrations e seeds com o seguinte comando: <code>php artisan migrate --seed</code>
+
+
+### Endpoints Criadas:
 
 | Endpoint              | Method |
 |-----------------------|:------:|
 | /ping                 |  POST  |
 | /auth                 |  POST  |
-| /user                 |  POST  |
-| /user                 |  PUT   |
-| /user                 | DELETE |
-| /user/{:id}           |  GET   |
+| /clients              |  POST  |
+| /clients              |  PUT   |
+| /clients              | DELETE |
+| /clients/{:id}        |  GET   |
+| /register             |  POST  |
+| /logout               |  GET   |
+| /refresh              |  GET   |
+| /me                   |  GET   |
 
 
 ## Endpoints
 
 ## Ping
-O Ping é público, usado para saber se o server está online.
+O Ping é público, usado para saber se os serviços do servidor está online.
 
 ## Auth
 
@@ -44,9 +60,8 @@ Ele irá retornar um JSON quando der erro e um JSON quando for sucesso.
 {  
    "status":"success",
    "message":"Usuário criado e JWT encontrado",
-  "tokenjwt":"eyJhbGciOi-RkOM8Hjc5DYNJuqyEy3gvy_IMjcu2w-hl2yHilvPNP_UK0ocUxaKdsD5oS5fV-TYlfH_k",
+   "token":"eyJhbGciOi-RkOM8Hjc5DYNJuqyEy3gvy_IMjcu2w-hl2yHilvPNP_UK0ocUxaKdsD5oS5fV-TYlfH_k",
    "expires":"2019-07-05",
-   "tokenmsg":"use o token para acessar os endpoints!",
    "User":{ 
       "id":345,
       "nome":"Programador Backend PHP Júnior",
@@ -66,7 +81,7 @@ Ele irá retornar um JSON quando der erro e um JSON quando for sucesso.
 }
 ```
 
-## User
+## clients
 
 Este endpoint deverá ser responsável por todo CRUD, ele deverá trazer informações do Usuário como:
 ``
@@ -79,14 +94,21 @@ Este endpoint deverá ser responsável por todo CRUD, ele deverá trazer informa
 ``
 no formato JSON.
 
+##Register
 
-## Pontos a serem avaliados
- - Organização do código e simplicidade na lógica de programação
- - Utilização de boas práticas (PSRs)
- - Deixar sempre a regra de negócio o mais desacoplada possível.
- - Criar as migrations e seeds para validação (obrigatório)
- - JWT (não obrigatório porém será considerado diferencial)
- - Criar os mocks de teste (não obrigatório porém será considerado diferencial)
+Este endpoint é reponsável por fazer o cadastro de usuário na api, retornando um  json com o token para ser ultilizado ao consumir os demais recursos da API.
+ 
+##Logout
+
+Este endpoint é responsável por efetuar o logout da api e invalidar o token gerado.
+
+##Refresh
+
+Este endpoint é responsável por revalidar o token gerado.
+
+##Me
+
+Este endpoint é responsável por retornar o usuário que está logado no momento.
  
  
 ## Referências
