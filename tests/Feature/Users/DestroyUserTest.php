@@ -1,4 +1,7 @@
 <?php
+
+namespace Tests\Feature\Users;
+
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
