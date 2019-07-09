@@ -11,12 +11,12 @@
 */
 
 Route::group([
-    'middleware' => ['api', 'jwt.verify'],
+    'middleware' => 'jwt.verify',
 ], function ($router) {
     Route::resource('/clients', 'ClientsController');
     Route::get('me', 'UsersController@me');
-    Route::get('logout', 'UsersController@logout');
-    Route::get('refresh', 'UsersController@refresh');
+    Route::get('/logout', 'UsersController@logout');
+    Route::get('/refresh', 'UsersController@refresh');
 });
 
 Route::post('register', 'UsersController@register');

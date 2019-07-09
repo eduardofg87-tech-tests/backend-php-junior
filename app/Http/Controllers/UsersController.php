@@ -9,12 +9,6 @@ use App\Http\Requests\UsersRequest;
 class UsersController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login']]);
-    }
-
-
     public function login(){
 
         $credentials = \request(['email', 'password']);

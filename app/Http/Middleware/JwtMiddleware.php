@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use JWTAuth;
-use Exeption;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
@@ -19,7 +18,6 @@ class JwtMiddleware extends BaseMiddleware
      */
     public function handle($request, Closure $next)
     {
-
         try {
             $user = JWTAuth::parseToken()->authenticate();
         } catch (JWTException $e) {
@@ -31,6 +29,7 @@ class JwtMiddleware extends BaseMiddleware
                 return response()->json(['error' => 'Token não encontrado']);
             }
         }
+
 
         return $next($request);
     }

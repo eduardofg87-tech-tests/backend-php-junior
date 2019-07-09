@@ -11,7 +11,7 @@ Para persistencia dos dados deve ser utilizado algum banco de dados relacional c
 ### O presente desafio deve ser solucionado até 12/07/2019. 
 
 ## Instruções para funcionamento:
-- Clone o repositório na sua pasta de projetos
+- Clone o repositório na sua pasta de projetos. Dê as devidas permissões no diretório.
 - No terminal, dentro da raiz do projeto, rode o comando: <code>composer install</code>, para fazer a instalação das depedências.
 - Crie um arquivo .env a partir do modelo de exemplo que se encontra na raiz do projeto e configure os seguintes parametros:
 
@@ -94,19 +94,19 @@ Este endpoint deverá ser responsável por todo CRUD, ele deverá trazer informa
 ``
 no formato JSON.
 
-##Register
+## Register
 
 Este endpoint é reponsável por fazer o cadastro de usuário na api, retornando um  json com o token para ser ultilizado ao consumir os demais recursos da API.
  
-##Logout
+## Logout
 
 Este endpoint é responsável por efetuar o logout da api e invalidar o token gerado.
 
-##Refresh
+## Refresh
 
 Este endpoint é responsável por revalidar o token gerado.
 
-##Me
+## Me
 
 Este endpoint é responsável por retornar o usuário que está logado no momento.
  
