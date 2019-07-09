@@ -8,7 +8,7 @@ class UserDestroyRequest extends FormRequest
 {
     public function authorize()
     {
-        return auth('api')->user()->id !== $this->user->id;
+        return auth('api')->check() && auth('api')->user()->isNot($this->user);
     }
 
     public function rules()
