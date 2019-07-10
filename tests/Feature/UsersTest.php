@@ -20,7 +20,7 @@ class UsersTest extends TestCase
         $data = factory(User::class, 10)->create();
         $response = $this->get('/api/users');
         $response->assertStatus(200)
-            ->assertExactJson($data->toArray());
+            ->assertJson(['data' => $data->toArray()]);
     }
 
     public function testApiShow()
