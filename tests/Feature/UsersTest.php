@@ -55,7 +55,7 @@ class UsersTest extends TestCase
         ]);
     }
 
-    public function test_it_can_update_a_user()
+    public function test_it_can_update_an_user()
     {
         $data = factory(User::class)->create();
         
@@ -77,6 +77,29 @@ class UsersTest extends TestCase
             'name'  => $dataToUpdate['name'],
             'email' => $dataToUpdate['email'],
             'cpf'   => $dataToUpdate['cpf'],
+        ]);
+    }
+
+    public function test_it_can_delete_an_user()
+    {
+        $data = factory(User::class)->create();
+                
+        $this->deleteJson("/api/users/$data->id")
+            ->assertStatus(200)
+            ->assertJson([
+                'id' => true,
+                'name' => $data['name'],
+                'cpf' => $data['cpf'],
+                'email' => $data['email'],
+                'email_verified_at' => true,
+                'updated_at' => true,
+                'created_at' => true,
+            ]);
+        
+        $this->assertDatabaseMissing('users', [
+            'name'  => $data->name,
+            'email' => $data->email,
+            'cpf'   => $data->cpf,
         ]);
     }
 
