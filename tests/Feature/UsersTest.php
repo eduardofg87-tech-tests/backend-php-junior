@@ -15,20 +15,69 @@ class UsersTest extends TestCase
      *
      * @return void
      */
-    public function testApiIndex()
+    public function test_it_can_list_users()
     {
         $data = factory(User::class, 10)->create();
-        $response = $this->get('/api/users');
-        $response->assertStatus(200)
+        
+        $this->get('/api/users')
+            ->assertStatus(200)
             ->assertJson(['data' => $data->toArray()]);
     }
 
-    public function testApiShow()
+    public function test_it_can_show_an_user()
     {
         $data = factory(User::class)->create();
-        $response = $this->get("/api/users/$data->id");
-        $response->assertStatus(200)
+        
+        $this->get("/api/users/$data->id")
+            ->assertStatus(200)
             ->assertExactJson($data->toArray());
+    }
+
+    public function test_it_can_create_an_user()
+    {
+        $data = factory(User::class)->raw();
+        
+        $this->postJson("/api/users", $data)
+            ->assertStatus(201)
+            ->assertJson([
+                'name' => $data['name'],
+                'cpf' => $data['cpf'],
+                'email' => $data['email'],
+                'updated_at' => true,
+                'created_at' => true,
+                'id' => true,
+            ]);
+        
+        $this->assertDatabaseHas('users', [
+            'name'  => $data['name'],
+            'email' => $data['email'],
+            'cpf'   => $data['cpf'],
+        ]);
+    }
+
+    public function test_it_can_update_a_user()
+    {
+        $data = factory(User::class)->create();
+        
+        $dataToUpdate = factory(User::class)->raw();
+        
+        $this->putJson("/api/users/$data->id", $dataToUpdate)
+            ->assertStatus(200)
+            ->assertJson([
+                'id' => true,
+                'name' => $dataToUpdate['name'],
+                'cpf' => $dataToUpdate['cpf'],
+                'email' => $dataToUpdate['email'],
+                'email_verified_at' => true,
+                'updated_at' => true,
+                'created_at' => true,
+            ]);
+
+        $this->assertDatabaseHas('users', [
+            'name'  => $dataToUpdate['name'],
+            'email' => $dataToUpdate['email'],
+            'cpf'   => $dataToUpdate['cpf'],
+        ]);
     }
 
 }
