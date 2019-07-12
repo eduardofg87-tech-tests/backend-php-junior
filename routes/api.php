@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    Route::delete('auth', 'AuthController@logout');
 });
 
-Route::prefix('v1')->group(function () {
-    Route::resource('users', 'UsersController');
-});
+Route::resource('users', 'UsersController')->except(['create', 'edit']);
+Route::post('auth', 'AuthController@login');
+Route::get('ping', 'PingController@index');
