@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Validator;
 
 class AuthController extends Controller
 {
