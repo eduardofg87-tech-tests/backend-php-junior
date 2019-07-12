@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -53,20 +54,20 @@ class Handler extends ExceptionHandler
             
             if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException)
             {
-                return response()->json(['error' => 'TOKEN_EXPIRED']);
+                return response()->json(['error' => 'TOKEN_EXPIRED'], Response::HTTP_UNAUTHORIZED);
             
             } else if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException) {
                 
-                return response()->json(['error' => 'TOKEN_INVALID']);
+                return response()->json(['error' => 'TOKEN_INVALID'], Response::HTTP_UNAUTHORIZED);
             
             } else if ($preException instanceof \Tymon\JWTAuth\Exceptions\TokenBlacklistedException) {
-                return response()->json(['error' => 'TOKEN_BLACKLISTED']);
+                return response()->json(['error' => 'TOKEN_BLACKLISTED'], Response::HTTP_UNAUTHORIZED);
             }
         }
         
         if ($exception->getMessage() === 'Token not provided')
         {
-            return response()->json(['error' => 'Token não fornecido']);
+            return response()->json(['error' => 'Token não fornecido'], Response::HTTP_UNAUTHORIZED);
         }
 
         return parent::render($request, $exception);
