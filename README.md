@@ -98,3 +98,13 @@ no formato JSON.
 1. [PostgreSQL](https://www.postgresql.org/)
 1. [MariaDB](https://mariadb.com/kb/pt-br/sobre-o-mariadb/)
 1. [PHP Unit](https://phpunit.de/)
+
+## Instruções para rodar a API
+
+```sh
+$ cd backend-php-junior
+$ composer install
+$ php artisan jwt:secret
+$ php artisan migrate --seed
+$ php artisan serv
+```
