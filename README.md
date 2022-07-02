@@ -8,7 +8,6 @@ Testes uniários com PHPUnit são um plus.
 Espera-se que o candidato tenha bons conhecimentos em PHP e saiba o mínimo do framework Laravel. 
 Para persistencia dos dados deve ser utilizado algum banco de dados relacional como por exemplo PostgreSQL ou MariaDB.
 
-### O presente desafio deve ser solucionado até 12/07/2019. 
 
 ## Instruções:
 1. Faça um fork do projeto.
