@@ -12,8 +12,7 @@ Para persistencia dos dados deve ser utilizado algum banco de dados relacional c
 
 ## Instruções:
 1. Faça um fork do projeto.
-1. Resolva o dasafio e submeta um PR até o dia 12/07/2019.
-1. Envie um e-mail para (oi at eduardofg dot dev) assim que o PR for submetido informando que o desafio foi finalizado.
+1. Envie um e-mail para (contato at ensolucoes dot com) assim que o PR for submetido informando que o desafio foi finalizado.
 
 ### Objetivo
 Construir uma API backend em Laravel que implementem um CRUD e os seguintes endpoints:
