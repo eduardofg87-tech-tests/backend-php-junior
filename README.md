@@ -5,7 +5,7 @@ Teste programador Backend PHP Júnior (Laravel)
 As tarefas de CRUD são rotinas muito comuns no dia a dia de desenvolvedores web, o objetivo principal do desafio é fazer um CRUD de Usuários. Somente a rota API é importante, não se preocupe com o frontend. 
 Todos testes de funcionamento do sistema serão realizados através do Postman.
 Testes uniários com PHPUnit são um plus.
-Espera-se que o candidato tenha bons conhecimentos em PHP e saiba o mínimo do framework Laravel. 
+Espera-se que o candidato tenha bons conhecimentos em PHP e saiba o mínimo do framework Laravel.
 Para persistencia dos dados deve ser utilizado algum banco de dados relacional como por exemplo PostgreSQL ou MariaDB.
 
 
@@ -39,13 +39,13 @@ Ele irá retornar um JSON quando der erro e um JSON quando for sucesso.
 
 **HTTP/2 200**
 ```json
-{  
+{
    "status":"success",
    "message":"Usuário criado e JWT encontrado",
   "tokenjwt":"eyJhbGciOi-RkOM8Hjc5DYNJuqyEy3gvy_IMjcu2w-hl2yHilvPNP_UK0ocUxaKdsD5oS5fV-TYlfH_k",
    "expires":"2019-07-05",
    "tokenmsg":"use o token para acessar os endpoints!",
-   "User":{ 
+   "User":{
       "id":345,
       "nome":"Programador Backend PHP Júnior",
       "cpf":"12345678909",
@@ -58,7 +58,7 @@ Ele irá retornar um JSON quando der erro e um JSON quando for sucesso.
 
 **HTTP/2 500**
 ```json
-{  
+{
    "status":"error",
    "message":"Usuário não pode ser autenticado!"
 }
@@ -69,11 +69,11 @@ Ele irá retornar um JSON quando der erro e um JSON quando for sucesso.
 Este endpoint deverá ser responsável por todo CRUD, ele deverá trazer informações do Usuário como:
 ``
   id
-  nome 
+  nome
   cpf
   email
-  created_at 
-  updated_at 
+  created_at
+  updated_at
 ``
 no formato JSON.
 
@@ -85,8 +85,8 @@ no formato JSON.
  - Criar as migrations e seeds para validação (obrigatório)
  - JWT (não obrigatório porém será considerado diferencial)
  - Criar os mocks de teste (não obrigatório porém será considerado diferencial)
- 
- 
+
+
 ## Referências
 1. [PHP](https://www.php.net/)
 1. [Laravel](https://laravel.com)
@@ -96,3 +96,22 @@ no formato JSON.
 1. [PostgreSQL](https://www.postgresql.org/)
 1. [MariaDB](https://mariadb.com/kb/pt-br/sobre-o-mariadb/)
 1. [PHP Unit](https://phpunit.de/)
+
+---
+## Instruções
+    cp .env.example .env
+
+    composer install
+
+    php artisan key:generate
+
+    php artisan migrate --seed
+
+    php artisan jwt:secret
+
+    php artisan serve
+
+O Seeder irá criar um usuario padrão com os seguintes dados:
+**name** - John Doe
+**email** - john@doe.com
+**password** - 12345678
