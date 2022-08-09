@@ -11,6 +11,11 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return User::all();
+    }
+
     public function store(UserStoreRequest $request)
     {
         return User::create($request->validated());
