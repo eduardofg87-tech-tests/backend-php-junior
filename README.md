@@ -1,3 +1,23 @@
+# Desafio cumprido
+
+Ambiente de desenvolvimento do projeto:
+
+Laravel 5.8.17
+Xampp 7.2.8 (Apache 2.4.34, MariaDB 10.1.34, PHP 7.2.8, phpMyAdmin 4.8.2)
+Windows 10
+
+Utilizado Composer e a biblioteca tymon/jwt-auth "1.0.*"
+
+Faça o download do projeto.
+Instale o Composer - Composer install
+Instale a biblioteca tymon/jwt-auth "1.0.*"
+  Publique a biblioteca - php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider
+  Gere o token - php artisan jwt:secret
+Crie o banco de dados
+Semeie o banco - php artisan db:seed
+Api pronta para os testes.
+  
+  
 # backend-php-junior
 Teste programador Backend PHP Júnior (Laravel)
 
